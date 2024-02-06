@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, TextInput } from 'react-native';
-import ExchangeCard from './components/ExchangeCard';
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
 
 const currencies = {
   "USD": {
@@ -94,73 +93,20 @@ const currencies = {
     "name": "Mexican Peso"
   }
 };
-const App = () => {
-  
-  const [exchanges, setExchanges] = useState([]);  
-  
-
-  // Agregar exchange
-  const AddExchangeHandler = (newExchange) => {
-    const exchange = {
-      id: exchanges.length, ...newExchange,
-    };
-    setExchanges([...exchanges, exchange]);
-    setShowInsertExchange(false);
-  };
-  // Eliminar exchange
-    const DeleteExchangeHandler = (exchangeId) => {
-    const updatedExchanges = exchanges.filter((exchange) => exchange.id !== exchangeId);
-    setExchanges(updatedExchanges);
-  };
-  const headerCnt = (
-    <View style={styles.header}>
-      <Image style={styles.headerImg} source={require('./assets/img/ep_money.png')} />
-      <View>
-        <Text style={styles.headerTitle}>Currency Exchanger</Text>
-
-        <TouchableOpacity
-          style={styles.headerButton}
-          onPress={() => setShowInsertExchange(true)}>
-          <Image style={styles.ImgButton} source={require('./assets/img/zondicons_add-outline.png')} />
-        </TouchableOpacity>
-
-      </View>
-    </View>
-  );
+export default function App() {
   return (
     <View style={styles.container}>
-      {headerCnt}
+      <Text>Open up App.js to start working on your app!</Text>
+      <StatusBar style="auto" />
     </View>
   );
-};
+}
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 12,
-    marginRight:3,
-    marginTop: 40,
-  },
-  header: {
-    flexDirection: 'row',
+    backgroundColor: '#fff',
     alignItems: 'center',
-    marginBottom: 16,
-  },
-  headerImg: {
-    width: 100,
-    height: 100,
-  },
-  headerTitle: {
-    marginLeft: 10,
-    fontSize: 24,
-    fontWeight: 'bold',
-  },
-  headerButton: {
-    padding: 10,
-    alignItems: "flex-end",
-  },
-  ImgButton: {
-    width: 30,
-    height: 30,
+    justifyContent: 'center',
   },
 });
-export default App;
