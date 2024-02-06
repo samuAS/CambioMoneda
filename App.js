@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity, FlatList, TextInput } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity,  } from 'react-native';
 
 
 const currencies = {
@@ -114,7 +114,7 @@ const App = () => {
     const DeleteExchangeHandler = (exchangeId) => {
 
     const updatedExchanges = exchanges.filter((exchange) => exchange.id !== exchangeId);
-    
+
     setExchanges(updatedExchanges);
   };
   const headerCnt = (
