@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Image, TouchableOpacity,  } from 'react-native';
+import { View, Text, StyleSheet, Image, TouchableOpacity, } from 'react-native';
+import { Modal } from 'react-native';
+import InsertExchange from './components/InsertExchange';
+
 
 
 const currencies = {
@@ -95,26 +98,23 @@ const currencies = {
   }
 };
 const App = () => {
-  
   const [showInsertExchange, setShowInsertExchange] = useState(false);
-  const [exchanges, setExchanges] = useState([]);  
-  
-  
+  const [exchanges, setExchanges] = useState([]);
+  const [selectedCurrency, setSelectedCurrency] = useState("");
 
-  // Agregar exchange
-  const AddExchangeHandler = (newExchange) => {
-
+  //New Exchange
+  const AddExchange = (newExchange) => {
     const exchange = {
       id: exchanges.length, ...newExchange,
     };
+
     setExchanges([...exchanges, exchange]);
     setShowInsertExchange(false);
   };
-  // Eliminar exchange
-    const DeleteExchangeHandler = (exchangeId) => {
 
+  //Delete Exchange
+  const DeleteExchange= (exchangeId) => {
     const updatedExchanges = exchanges.filter((exchange) => exchange.id !== exchangeId);
-
     setExchanges(updatedExchanges);
   };
   const headerCnt = (
@@ -136,6 +136,14 @@ const App = () => {
   return (
     <View style={styles.container}>
       {headerCnt}
+      <Modal visible={showInsertExchange}>
+        <InsertExchange
+          currencies={currencies}
+          onCancel={() => setShowInsertExchange(false)}
+          onAddExchange={AddExchange}
+          onSelectCurrency={setSelectedCurrency}
+        />
+      </Modal>
     </View>
   );
 };
@@ -143,8 +151,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 12,
-    marginRight:3,
-    marginTop: 40,
+    marginRight: 3,
+    marginTop: 20,
+    backgroundColor: '#fffacd'
   },
   header: {
     flexDirection: 'row',

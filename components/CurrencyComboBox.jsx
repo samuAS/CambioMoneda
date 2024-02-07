@@ -18,7 +18,7 @@ const CurrencyComboBox = ({ currencies, onSelectCurrency }) => {
    <View style={styles.container}>
 
     <RNPickerSelect 
-      placeholder={{ label: 'Selecione a moneda', value: null }}
+      placeholder={{ label: 'Selecione una moneda', value: null }}
       onValueChange={handleCurrencyChange}
       items={Object.keys(currencies).map((currencyCode) => {
 
