@@ -8,7 +8,7 @@ const InsertExchange = ({ currencies, onAddExchange, onCancel }) => {
     const [amount] = useState('');
 
     const AddExchange = () => {
-        //Conversion
+        
         const conversionResult = convertCurrency(amount, fromCurrency, toCurrency, currencies);
 
         //nuevo exchangee
@@ -21,7 +21,7 @@ const InsertExchange = ({ currencies, onAddExchange, onCancel }) => {
             emojiTo: currencies[toCurrency].emoji,
             emojiFrom: currencies[fromCurrency].emoji,
         });
-        onCancel();
+        onCancel();//para poder cerrar el modal
     };
 
     const convertCurrency = (amount, fromCurrency, toCurrency) => {
@@ -36,7 +36,7 @@ const InsertExchange = ({ currencies, onAddExchange, onCancel }) => {
         const exchangeRateTo = currencies[toCurrency].exchangeRate;
 
 
-        //Conversion currency
+        //Conversion 
         const result = (parseFloat(amount) * exchangeRateTo) / exchangeRateFrom;
 
         return result.toFixed(2);

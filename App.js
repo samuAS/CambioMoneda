@@ -105,11 +105,11 @@ const App = () => {
   //New Exchange
   const AddExchange = (newExchange) => {
     const exchange = {
-      id: exchanges.length, ...newExchange,
+      id: exchanges.length, ...newExchange,//Se le pone un id al exchange
     };
 
     setExchanges([...exchanges, exchange]);
-    setShowInsertExchange(false);
+    setShowInsertExchange(false);//se oculta despues de añadir
   };
 
   //Delete Exchange
